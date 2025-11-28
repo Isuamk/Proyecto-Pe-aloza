@@ -106,14 +106,16 @@ void Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 				if (aux > 0)
 				{
 					otraPalabra[aux] = '\0';
-					strcpy_s(palabrota[conta2++], TAMTOKEN, otraPalabra);
+					strcpy_s(palabrota[conta2], TAMTOKEN, otraPalabra);
+					conta2++;
 					aux = 0;
 				}
 			}
 			else
 			{
 				if (aux < TAMTOKEN - 1)
-					otraPalabra[aux++] = tolower((unsigned char)c);
+					otraPalabra[aux] = tolower((unsigned char)c);
+				aux++;
 			}
 			conta++;
 		}
@@ -121,7 +123,8 @@ void Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 		if (aux > 0)
 		{
 			otraPalabra[aux] = '\0';
-			strcpy_s(palabrota[conta2++], TAMTOKEN, otraPalabra);
+			strcpy_s(palabrota[conta2], TAMTOKEN, otraPalabra);
+			conta2++;
 		}
 		for (int k = 0; k < conta2; k++)
 		{
