@@ -220,7 +220,7 @@ void ClonaPalabras(
 	char szPalabrasSugeridas[][TAMTOKEN],
 	int& iNumSugeridas)
 {
-	char alfabeto[] = "abcdefghijklmnopqrstuvwxyz\361\341\351\355\363\372";
+	char alfabeto[] = "abcdefghijklmn\361opqrstuvwxyz\341\351\355\363\372";
 	char candidata[TAMTOKEN];
 	int lenPalabra = strlen(szPalabraLeida);
 	int lenAlfabeto = strlen(alfabeto);
@@ -292,4 +292,5 @@ void ClonaPalabras(
 	}
 	ordenarSugeridas(szPalabrasSugeridas, iNumSugeridas);
 }
+//tengo hambre we
 
