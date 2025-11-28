@@ -80,9 +80,9 @@ void Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 	char palabra[NUMPALABRAS];
 	char palabrota[NUMPALABRAS][TAMTOKEN];
 	char otraPalabra[TAMTOKEN];
-	int encontrada = false;
-	int conta = 0;
-	int conta2 = 0;
+	int encontrada;
+	int conta;
+	int conta2;
 	FILE* fp;
 
 	fopen_s(&fp, szNombre, "r");
@@ -96,6 +96,8 @@ void Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 
 	while (fgets(palabra, NUMPALABRAS, fp))
 	{
+		conta = 0;
+		conta2 = 0;
 		int aux = 0;
 		while (palabra[conta] != '\0')
 		{
@@ -106,16 +108,14 @@ void Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 				if (aux > 0)
 				{
 					otraPalabra[aux] = '\0';
-					strcpy_s(palabrota[conta2], TAMTOKEN, otraPalabra);
-					conta2++;
+					strcpy_s(palabrota[conta2++], TAMTOKEN, otraPalabra);
 					aux = 0;
 				}
 			}
 			else
 			{
 				if (aux < TAMTOKEN - 1)
-					otraPalabra[aux] = tolower((unsigned char)c);
-				aux++;
+					otraPalabra[aux++] = tolower((unsigned char)c);
 			}
 			conta++;
 		}
@@ -123,11 +123,11 @@ void Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 		if (aux > 0)
 		{
 			otraPalabra[aux] = '\0';
-			strcpy_s(palabrota[conta2], TAMTOKEN, otraPalabra);
-			conta2++;
+			strcpy_s(palabrota[conta2++], TAMTOKEN, otraPalabra);
 		}
 		for (int k = 0; k < conta2; k++)
 		{
+			encontrada = false;
 			for (int i = 0; i < iNumElementos; i++)
 			{
 				if (strcmp(szPalabras[i], palabrota[k]) == 0)
